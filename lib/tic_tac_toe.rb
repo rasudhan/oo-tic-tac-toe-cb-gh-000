@@ -50,12 +50,12 @@ class TicTacToe
     end
   end
 
-  def current_player(board)
-    turn_count(board).even? ? 'X' : 'O'
+  def current_player
+    turn_count.even? ? 'X' : 'O'
   end
 
-  def turn_count(board)
-    board.count {|token| token=='X' || token=='O'}
+  def turn_count
+    @board.count {|token| token=='X' || token=='O'}
   end
 
   # Define your WIN_COMBINATIONS constant
@@ -73,22 +73,10 @@ class TicTacToe
 
 
   def won?(board)
-    WIN_COMBINATIONS.each {|win_combo|
-      index_0 = win_combo[0]
-      index_1 = win_combo[1]
-      index_2 = win_combo[2]
-
-      position_1 = board[index_0]
-      position_2 = board[index_1]
-      position_3 = board[index_2]
-
-      if position_1 == "X" && position_2 == "X" && position_3 == "X"
-        return win_combo
-      elsif position_1 == "O" && position_2 == "O" && position_3 == "O"
-        return win_combo
-      end
-    }
-    return false
+    WIN_COMBINATIONS.any? do |combo|
+     if position_taken?(combo[0]) && @board[combo[0]] == @board[combo[1]] && @board[combo[1]] == @board[combo[2]]
+       return combo
+     end
   end
 
   def full?(board)
