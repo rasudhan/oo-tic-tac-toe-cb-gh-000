@@ -5,11 +5,7 @@ class TicTacToe
 
   def play
     turn until over?
-    if won?
-      puts "Congratulations #{winner(board)}!"
-    elsif draw?(board)
-      puts "Cat's Game!"
-    end
+    puts winner? "Congratulations #{winner}!" : "Cat's Game!"
   end
 
   # Helper Method
