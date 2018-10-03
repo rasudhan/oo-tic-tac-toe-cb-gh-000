@@ -46,7 +46,7 @@ class TicTacToe
       move(index,token)
       display_board(board)
     else
-      turn(board)
+      turn
     end
   end
 
@@ -96,7 +96,5 @@ class TicTacToe
       @board[combo[0]]
     end
   end
-
-
 
 end
