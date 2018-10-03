@@ -91,7 +91,7 @@ class TicTacToe
     won? || draw?
   end
 
-  def winner(board)
+  def winner
     index = []
     index = won?(board)
     if index == false
